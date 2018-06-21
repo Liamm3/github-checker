@@ -24,7 +24,7 @@ export default class extends Component {
   render() {
     return (
       <HeroContainer>
-        <Heading>Search for your friends on Github!</Heading>
+        <Heading>Check out your friends on Github!</Heading>
         <HeroForm onSubmit={this.onSubmitHandler}>
           <Col>
             <Input

@@ -6,7 +6,7 @@ import NavLink from "./NavLink";
 export default () => (
   <header>
     <Nav>
-      <NavLink href="/">GitHub Searcher</NavLink>
+      <NavLink href="/">GitHub Checker</NavLink>
     </Nav>
   </header>
 );
