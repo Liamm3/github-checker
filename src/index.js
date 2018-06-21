@@ -6,7 +6,8 @@ import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 
 const typography = new Typography({
-  baseFontSize: "18px"
+  baseFontSize: "18px",
+  scaleRatio: 4
 });
 
 typography.injectStyles();
