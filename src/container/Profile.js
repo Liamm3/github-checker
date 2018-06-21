@@ -1,7 +1,18 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
 
+import { fetchUser } from "../actions/user";
 import Heading from "../components/Heading";
+
+const mapStateToProps = state => ({
+  user: state.user.user,
+  loading: state.user.loading
+});
+
+const mapDispatchToProps = dispatch => ({
+  onFetchUser: name => dispatch(fetchUser(name))
+});
 
 const Grid = styled.div`
   display: grid;
@@ -18,11 +29,27 @@ const Repos = styled.div`
   grid-area: "about";
 `;
 
-export default ({ match }) => (
-  <Grid>
-    <About>
-      <Heading>{match.params.name}</Heading>
-    </About>
-    <Repos>Repos</Repos>
-  </Grid>
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(
+  class extends Component {
+    componentDidMount() {
+      if (!this.props.user) {
+        this.props.onFetchUser(this.props.match.params.name);
+        console.log(this.props.user);
+      }
+    }
+
+    render() {
+      return (
+        <Grid>
+          <About>
+            <Heading>{this.props.match.params.name}</Heading>
+          </About>
+          <Repos>Repos</Repos>
+        </Grid>
+      );
+    }
+  }
 );

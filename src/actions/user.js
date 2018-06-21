@@ -6,14 +6,13 @@ export const fetchUser = name => async dispatch => {
     const response = await fetch(`https://api.github.com/users/${name}`);
     const user = await response.json();
 
-    console.log(user);
     dispatch(fetchUserSuccess(user));
   } catch (error) {
     dispatch(fetchUserFail(error));
   }
 };
 
-export const fetchUserStart = () => ({ type: actions.FETCH_USER_START });
+const fetchUserStart = () => ({ type: actions.FETCH_USER_START });
 
 const fetchUserSuccess = user => ({
   type: actions.FETCH_USER_SUCCESS,
